@@ -1,17 +1,14 @@
 package za.co.bootcamp.demo.zoo;
 
-
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ZooRepo {
     private final SQLServerDataSource dataSource;
 
-    public ZooRepo() {
-        // TODO: Inject this dependency rather
-        dataSource = new SQLServerDataSource();
-        dataSource.setDatabaseName("MyDatabase");
-        dataSource.setUser("me");
-        dataSource.setPassword("password");
+    public ZooRepo(SQLServerDataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Zoo findByName(String name) {

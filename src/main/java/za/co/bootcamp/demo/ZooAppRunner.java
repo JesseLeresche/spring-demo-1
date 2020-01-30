@@ -1,5 +1,6 @@
 package za.co.bootcamp.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -14,10 +15,10 @@ public class ZooAppRunner implements ApplicationRunner {
     private final ZooService zooService;
     private final AnimalService animalService;
 
-    public ZooAppRunner() {
-        // TODO: Inject this dependency rather
-        this.zooService = new ZooService();
-        this.animalService = new AnimalService();
+    @Autowired
+    public ZooAppRunner(ZooService zooService, AnimalService animalService) {
+        this.zooService = zooService;
+        this.animalService = animalService;
     }
 
     @Override

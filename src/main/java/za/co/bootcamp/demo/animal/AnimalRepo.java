@@ -1,17 +1,14 @@
 package za.co.bootcamp.demo.animal;
 
-
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AnimalRepo {
     private final SQLServerDataSource dataSource;
 
-    public AnimalRepo() {
-        // TODO: Inject this dependency rather
-        dataSource = new SQLServerDataSource();
-        dataSource.setDatabaseName("MyDatabase");
-        dataSource.setUser("me");
-        dataSource.setPassword("password");
+    public AnimalRepo(SQLServerDataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public Animal findByName(String name) {
