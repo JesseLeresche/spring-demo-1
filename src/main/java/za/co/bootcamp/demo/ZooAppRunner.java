@@ -1,14 +1,13 @@
 package za.co.bootcamp.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import za.co.bootcamp.demo.animal.Animal;
-import za.co.bootcamp.demo.animal.AnimalService;
-import za.co.bootcamp.demo.zoo.Zoo;
-import za.co.bootcamp.demo.zoo.ZooService;
+import za.co.bootcamp.demo.model.Animal;
+import za.co.bootcamp.demo.repo.AnimalRepo;
+import za.co.bootcamp.demo.service.AnimalService;
+import za.co.bootcamp.demo.model.Zoo;
+import za.co.bootcamp.demo.repo.ZooRepo;
+import za.co.bootcamp.demo.service.ZooService;
 
 @Component
 public class ZooAppRunner implements CommandLineRunner {
@@ -16,24 +15,15 @@ public class ZooAppRunner implements CommandLineRunner {
     private final ZooService zooService;
     private final AnimalService animalService;
 
-    @Autowired
-    public ZooAppRunner(ZooService zooService, AnimalService animalService) {
-        this.zooService = zooService;
-        this.animalService = animalService;
+    public ZooAppRunner() {
+        ZooRepo zooRepo = new ZooRepo();
+        this.zooService = new ZooService(zooRepo);
+        AnimalRepo animalRepo = new AnimalRepo();
+        this.animalService = new AnimalService(animalRepo);
     }
-
-//    @Override
-//    public void run(ApplicationArguments args) {
-//        Zoo myZoo = zooService.findZooByName("Joburg Zoo");
-//        System.out.println(myZoo);
-//        Animal animal = animalService.findAnimalByName("Simba");
-//        System.out.println(animal);
-//    }
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Hello World");
-
         Zoo myZoo = zooService.findZooByName("Joburg Zoo");
         System.out.println(myZoo);
         Animal animal = animalService.findAnimalByName("Simba");

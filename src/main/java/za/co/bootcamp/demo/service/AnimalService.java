@@ -1,8 +1,8 @@
-package za.co.bootcamp.demo.animal;
+package za.co.bootcamp.demo.service;
 
-import org.springframework.stereotype.Component;
+import za.co.bootcamp.demo.model.Animal;
+import za.co.bootcamp.demo.repo.AnimalRepo;
 
-@Component
 public class AnimalService {
     private final AnimalRepo animalRepo;
 

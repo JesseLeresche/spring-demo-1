@@ -1,4 +1,4 @@
-package za.co.bootcamp.demo.animal;
+package za.co.bootcamp.demo.model;
 
 public class Animal {
     private String name;

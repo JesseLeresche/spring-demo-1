@@ -1,15 +1,10 @@
-package za.co.bootcamp.demo.zoo;
+package za.co.bootcamp.demo.repo;
 
-import org.springframework.stereotype.Component;
+import za.co.bootcamp.demo.model.Zoo;
 
-import javax.sql.DataSource;
-
-@Component
 public class ZooRepo {
-    private final DataSource dataSource;
 
-    public ZooRepo(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public ZooRepo() {
     }
 
     public Zoo findByName(String name) {

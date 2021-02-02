@@ -1,15 +1,11 @@
-package za.co.bootcamp.demo.animal;
+package za.co.bootcamp.demo.repo;
 
-import org.springframework.stereotype.Component;
+import za.co.bootcamp.demo.model.Animal;
 
-import javax.sql.DataSource;
-
-@Component
 public class AnimalRepo {
-    private final DataSource dataSource;
 
-    public AnimalRepo(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public AnimalRepo() {
+
     }
 
     public Animal findByName(String name) {
