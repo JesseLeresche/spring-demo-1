@@ -3,6 +3,7 @@ package za.co.bootcamp.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import za.co.bootcamp.demo.animal.Animal;
 import za.co.bootcamp.demo.animal.AnimalService;
@@ -10,7 +11,7 @@ import za.co.bootcamp.demo.zoo.Zoo;
 import za.co.bootcamp.demo.zoo.ZooService;
 
 @Component
-public class ZooAppRunner implements ApplicationRunner {
+public class ZooAppRunner implements CommandLineRunner {
 
     private final ZooService zooService;
     private final AnimalService animalService;
@@ -21,8 +22,18 @@ public class ZooAppRunner implements ApplicationRunner {
         this.animalService = animalService;
     }
 
+//    @Override
+//    public void run(ApplicationArguments args) {
+//        Zoo myZoo = zooService.findZooByName("Joburg Zoo");
+//        System.out.println(myZoo);
+//        Animal animal = animalService.findAnimalByName("Simba");
+//        System.out.println(animal);
+//    }
+
     @Override
-    public void run(ApplicationArguments args) {
+    public void run(String... args) throws Exception {
+        System.out.println("Hello World");
+
         Zoo myZoo = zooService.findZooByName("Joburg Zoo");
         System.out.println(myZoo);
         Animal animal = animalService.findAnimalByName("Simba");
