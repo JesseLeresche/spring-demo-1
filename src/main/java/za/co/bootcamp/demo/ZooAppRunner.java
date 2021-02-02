@@ -1,5 +1,7 @@
 package za.co.bootcamp.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import za.co.bootcamp.demo.model.Animal;
@@ -12,8 +14,13 @@ import za.co.bootcamp.demo.service.ZooService;
 @Component
 public class ZooAppRunner implements CommandLineRunner {
 
+    Logger logger = LoggerFactory.getLogger(ZooAppRunner.class);
+
     private final ZooService zooService;
     private final AnimalService animalService;
+    private String datasourceUrl;
+    private String username;
+    private String password;
 
     public ZooAppRunner() {
         ZooRepo zooRepo = new ZooRepo();
@@ -24,9 +31,10 @@ public class ZooAppRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        logger.info("Connecting to database {}, username {}, password {}", datasourceUrl, username, password);
         Zoo myZoo = zooService.findZooByName("Joburg Zoo");
-        System.out.println(myZoo);
+        logger.info("Found zoo {}", myZoo);
         Animal animal = animalService.findAnimalByName("Simba");
-        System.out.println(animal);
+        logger.info("Found animal {}", animal);
     }
 }
